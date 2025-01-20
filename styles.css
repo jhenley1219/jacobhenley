@@ -37,12 +37,19 @@ main {
 
 .hero .nav-links {
     display: flex;
-    justify-content: center; 
-    list-style: none; 
-    gap: 2rem; 
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+    width: fit-content; /* Change from 100% to fit-content */
+    margin-left: auto; /* Center the nav-links container */
+    margin-right: auto;
 }
 
 .hero .nav-links a {
+    display: inline-block;
     text-decoration: none;
     color: #575757;
     font-weight: 500;
@@ -73,9 +80,35 @@ main {
 /* Image Grid Section */
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Force a 2x2 grid */
-    gap: 6rem; 
-    padding: 5rem 14rem; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6rem;
+    padding: 5rem 14rem; /* Original large padding */
+}
+
+/* Add these media queries */
+@media (max-width: 1400px) {
+    .image-grid {
+        padding: 5rem 8rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .image-grid {
+        padding: 5rem 4rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .image-grid {
+        padding: 5rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr; /* Already in your CSS */
+        padding: 3rem 1rem;
+    }
 }
 
 .image-grid .grid-item {
