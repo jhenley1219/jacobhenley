@@ -1,0 +1,197 @@
+.section {
+	max-width: var(--max-w);
+	margin: 0 auto;
+	padding: 36px 28px;
+}
+
+.bio {
+	max-width: var(--max-w);
+	margin: 0 auto;
+	padding: 80px 28px 40px;
+}
+
+.kickerTag {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+	margin: 0 0 24px;
+}
+
+.bioGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 48px;
+	align-items: start;
+}
+
+.headshot {
+	width: 100%;
+	border-radius: 20px;
+	display: block;
+	box-shadow: 0 24px 60px -26px rgba(40, 30, 90, 0.4);
+}
+
+.bioMeta {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.bioMetaItem {
+	font-family: var(--font-mono);
+	font-size: 11.5px;
+	letter-spacing: 0.04em;
+	color: var(--ink-mute);
+}
+
+.bioTitle {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	margin: 0 0 24px;
+	text-wrap: balance;
+}
+
+.bioText {
+	font-size: 16.5px;
+	line-height: 1.65;
+	color: #454250;
+	margin: 0 0 18px;
+}
+
+.bioText:last-child {
+	margin-bottom: 0;
+}
+
+.skillsGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 18px;
+}
+
+.timeline {
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 160px 1fr;
+	gap: 24px;
+	padding: 22px 0;
+	border-bottom: 1px solid #eceae6;
+}
+
+.rowLast {
+	border-bottom: 0;
+}
+
+.rowDate {
+	font-family: var(--font-mono);
+	font-size: 13px;
+	color: var(--ink-mute);
+}
+
+.rowTitle {
+	font-family: var(--font-display);
+	font-size: 19px;
+	font-weight: 600;
+	margin: 0 0 4px;
+}
+
+.rowOrg {
+	font-size: 14px;
+	color: var(--ink-faint);
+	margin: 0 0 10px;
+}
+
+.rowDesc {
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--ink-soft);
+	margin: 0;
+}
+
+.splitGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 40px;
+}
+
+.posterImg {
+	width: 100%;
+	margin-top: 22px;
+	border-radius: 18px;
+	display: block;
+	box-shadow: 0 24px 60px -26px rgba(40, 30, 90, 0.4);
+}
+
+.prose {
+	font-size: 15.5px;
+	line-height: 1.65;
+	color: #454250;
+	margin: 0 0 16px;
+}
+
+.prose:last-child {
+	margin-bottom: 0;
+}
+
+.quote {
+	margin: 26px 0 0;
+	background: #f7f6ff;
+	border: 1px solid var(--line);
+	border-left: 3px solid #6d5cf0;
+	border-radius: 14px;
+	padding: 22px 26px;
+}
+
+.quoteText {
+	font-family: var(--font-display);
+	font-size: 17px;
+	line-height: 1.6;
+	color: #2f2c45;
+	font-style: italic;
+	margin: 0 0 12px;
+	text-wrap: pretty;
+}
+
+.quoteCite {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	letter-spacing: 0.04em;
+	color: var(--ink-mute);
+	font-style: normal;
+}
+
+.eduList {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.eduTitle {
+	font-family: var(--font-display);
+	font-size: 16px;
+	font-weight: 600;
+	margin: 0 0 3px;
+}
+
+.eduMeta {
+	font-size: 13.5px;
+	color: var(--ink-faint);
+	margin: 0;
+}
+
+.badge {
+	margin-top: 24px;
+}
+
+.spacer {
+	height: 60px;
+}

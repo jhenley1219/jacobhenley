@@ -1,0 +1,18 @@
+{
+  "name": "@jacobhenley/agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "On-device portfolio guide agent: an animated Web Component with in-browser semantic intent matching.",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "peerDependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.1.1"
+  }
+}

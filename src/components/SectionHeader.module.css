@@ -1,0 +1,28 @@
+.head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 26px;
+	border-top: 1px solid var(--line-soft);
+	padding-top: 24px;
+}
+
+.tight {
+	margin-bottom: 22px;
+}
+
+.kicker {
+	font-family: var(--font-mono);
+	font-size: 13px;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--ink-mute);
+	margin: 0;
+	font-weight: 500;
+}
+
+.note {
+	font-size: 13px;
+	color: var(--ink-faint);
+}

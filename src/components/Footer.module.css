@@ -1,0 +1,30 @@
+.footer {
+	border-top: 1px solid var(--line-head);
+	background: var(--bg-alt);
+}
+
+.inner {
+	max-width: var(--max-w);
+	margin: 0 auto;
+	padding: 30px 28px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.note {
+	font-size: 13.5px;
+	color: var(--ink-mute);
+}
+
+.icon {
+	display: inline-flex;
+	color: var(--ink-mute);
+	transition: color 0.2s ease;
+}
+
+.icon:hover {
+	color: var(--accent);
+}
