@@ -137,6 +137,7 @@ export const PROJECTS: Record<ProjectId, Project> = {
 				href: 'https://www.mix.gmu.edu/blog/nose-knows-air-quality-detection-capstone-made-in-the-mix',
 			},
 			{ label: 'HRI 2026 proceedings', href: 'https://dl.acm.org/doi/10.1145/3776734.3794605' },
+			{ label: 'GitHub', href: 'https://github.com/jhenley1219/nose-knows' },
 		],
 	},
 	blimp: {
