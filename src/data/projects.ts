@@ -149,14 +149,14 @@ export const PROJECTS: Record<ProjectId, Project> = {
 			'The GMU BLIMP program (Biologically-inspired, Lighter-than-air, Instructional, Mechatronics Program) challenges teams to build a bio-inspired, lighter-than-air robot with flapping-wing propulsion, efficient and safe enough to fly around people.',
 		build: [
 			'Built a bio-inspired flapping-wing blimp, nicknamed "Jack the Flapper" by the team, over a nine-week mechatronics program at the GMU MIX.',
-			'Flew it from an ESP32 paired to a PS3 controller over Bluetooth, mapping a single joystick to three servos.',
+			'Flew it from an ESP32 paired to a PS3 controller over Bluetooth, mapping the two analog sticks to four servos: one flaps the wings, the other steers pitch and rotation.',
 			'Designed a top-mounted stick-and-counterweight mechanism that tilts the blimp front-to-back and side-to-side and turns it in place, with custom 3D-printed parts, built as a team of three.',
 		],
 		impact: [
 			'Earned the GMU "Lighter-than-air Mechatronics Prototyping" micro-credential.',
 			'Competed in the program’s judged design competition.',
 		],
-		stack: 'ESP32 · Bluetooth (PS3 controller) · 3× servo control · CAD · FFF 3D printing',
+		stack: 'ESP32 · Bluetooth (PS3 controller) · 4× servo control · CAD · FFF 3D printing',
 		links: [
 			{ label: 'BLIMP program', href: 'https://www.mix.gmu.edu/blimp' },
 			{ label: 'GitHub', href: 'https://github.com/jhenley1219/jack-the-flapper' },
