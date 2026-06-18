@@ -19,6 +19,12 @@
 	color: var(--ink-mute);
 }
 
+.icons {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+}
+
 .icon {
 	display: inline-flex;
 	color: var(--ink-mute);

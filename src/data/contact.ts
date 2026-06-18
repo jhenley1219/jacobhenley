@@ -4,4 +4,6 @@ const ENCODED_EMAIL = 'amJoZW5sZXkxMjE5QGdtYWlsLmNvbQ==';
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/jacob-henley2/';
 
+export const GITHUB_URL = 'https://github.com/jhenley1219';
+
 export const getEmail = (): string => atob(ENCODED_EMAIL);
