@@ -1,6 +1,6 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import { Layout } from './components/Layout.tsx';
 import { OnDeviceGuide } from '@jacobhenley/agent';
+import { Layout } from './components/Layout.tsx';
 import { WorkPage } from './pages/WorkPage.tsx';
 import { AboutPage } from './pages/AboutPage.tsx';
 import { ContactPage } from './pages/ContactPage.tsx';

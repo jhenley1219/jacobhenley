@@ -19,12 +19,26 @@
 	border-color: var(--accent-tint);
 }
 
+.cardStatic {
+	cursor: default;
+}
+
+.cardStatic:hover {
+	transform: none;
+	box-shadow: none;
+	border-color: var(--line);
+}
+
 .media {
 	position: relative;
 	overflow: hidden;
 	height: 188px;
 	background-size: cover;
 	background-position: center;
+}
+
+.mediaEmpty {
+	background: linear-gradient(135deg, #f3f1ff 0%, #fdfcff 60%, #f7f6ff 100%);
 }
 
 .video {
@@ -77,4 +91,18 @@
 	font-size: 13px;
 	font-weight: 600;
 	color: var(--ink-mute);
+}
+
+.status {
+	align-self: flex-start;
+	font-family: var(--font-mono);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: var(--accent);
+	background: #f7f6ff;
+	border: 1px solid var(--accent-tint);
+	border-radius: 999px;
+	padding: 5px 11px;
 }

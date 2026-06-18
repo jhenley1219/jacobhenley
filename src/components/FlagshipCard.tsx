@@ -16,9 +16,9 @@ export const FlagshipCard = ({ onOpen }: Props): React.ReactElement => (
 			<p className={styles.eyebrow}>Flagship · Production platform</p>
 			<h3 className={styles.title}>Design-automation platform</h3>
 			<p className={styles.desc}>
-				Built and shipped the production platform a manufacturer now designs and quotes with —
-				including a real-time 3D configurator that drops a kitchen into a photo of the customer’s
-				own backyard.
+				A production platform a manufacturer designs, prices, and sells with. As a full-stack engineer on it, I built
+				the in-house image pipeline that turns a customer’s design into a sales-ready
+				rendering.
 			</p>
 			<div className={styles.tags}>
 				{FLAGSHIP_TAGS.map((t) => (
@@ -27,7 +27,7 @@ export const FlagshipCard = ({ onOpen }: Props): React.ReactElement => (
 					</span>
 				))}
 			</div>
-			<span className={styles.cta}>Replaced a ~$100k/yr rendering service · read the story →</span>
+			<span className={styles.cta}>Saved ~$90k/yr by bringing rendering in-house · read the story →</span>
 		</div>
 	</button>
 );

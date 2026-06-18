@@ -81,3 +81,15 @@
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	gap: 24px;
 }
+
+.gridSpace {
+	margin-top: 24px;
+}
+
+.affiliation {
+	margin: 26px 2px 0;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--ink-mute);
+	max-width: 70ch;
+}

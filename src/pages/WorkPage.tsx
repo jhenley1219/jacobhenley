@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PROJECTS, ROBOTICS_CARDS, type ProjectId } from '../data/projects.ts';
+import { PROJECTS, RESEARCH_CARDS, SHOWCASE_CARDS, type ProjectId } from '../data/projects.ts';
 import { FlagshipCard } from '../components/FlagshipCard.tsx';
 import { RoboticsCard } from '../components/RoboticsCard.tsx';
 import { SectionHeader } from '../components/SectionHeader.tsx';
@@ -32,15 +32,35 @@ export const WorkPage = (): React.ReactElement => {
 
 				<FlagshipCard onOpen={() => setOpenId('flagship')} />
 
+				<div className={`${styles.grid} ${styles.gridSpace}`}>
+					{SHOWCASE_CARDS.map((card) => (
+						<RoboticsCard
+							key={card.id}
+							card={card}
+							onOpen={() => card.project && setOpenId(card.project)}
+						/>
+					))}
+				</div>
+
 				<div data-agent="robotics" className={styles.subHead}>
-					<h2 className={styles.kicker}>02 · Robotics &amp; research</h2>
+					<h2 className={styles.kicker}>02 · Research</h2>
 				</div>
 
 				<div className={styles.grid}>
-					{ROBOTICS_CARDS.map((card) => (
-						<RoboticsCard key={card.id} card={card} onOpen={() => setOpenId(card.id)} />
+					{RESEARCH_CARDS.map((card) => (
+						<RoboticsCard
+							key={card.id}
+							card={card}
+							onOpen={() => card.project && setOpenId(card.project)}
+						/>
 					))}
 				</div>
+
+				<p className={styles.affiliation}>
+					Research conducted with the Human-Robot Interaction Lab and the Human-Autonomy
+					Collaboration Lab at George Mason University, working with Dr. Eileen Roesler and Dr. J.
+					Gregory Trafton, and in Dr. Anne Sereno’s cognition lab at Purdue University.
+				</p>
 			</section>
 
 			{open && <ProjectModal project={open} onClose={() => setOpenId(null)} />}

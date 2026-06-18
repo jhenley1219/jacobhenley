@@ -28,7 +28,7 @@ export const AboutPage = (): React.ReactElement => (
 					</p>
 					<p className={styles.bioText}>
 						That question has taken him from running behavioral experiments, to programming physical
-						robots, to building and shipping a production platform used in a real business. The
+						robots, to shipping features on a production platform used in a real business. The
 						throughline is range, paired with a habit of grounding every engineering decision in
 						human factors: usability, transparency, and cognitive ergonomics.
 					</p>
@@ -74,10 +74,10 @@ export const AboutPage = (): React.ReactElement => (
 			<p className={styles.prose}>
 				When a process breaks or a team gets stuck, Jacob tends to be the person called in. He trained
 				for an interim factory-management role in a single day, then built the systems that outlasted
-				him in it: room-mapping that eliminated double-scheduling, color-coded workflows that cut the
-				error rate, and procedural Spanish so a mixed-language crew could run without him standing over
-				it. Today he turns big ideas into features that are both impressive and genuinely practical,
-				weighing real user needs, ROI, and the architecture a system will need to grow — as at home on a
+				him in it: room-mapping that eliminated double-scheduling and color-coded workflows that cut the
+				error rate.
+				Today he turns big ideas into features that are both impressive and genuinely practical,
+				weighing real user needs, ROI, and the architecture a system will need to grow, as at home on a
 				shop floor as in a design review.
 			</p>
 			<blockquote className={styles.quote}>
@@ -86,14 +86,14 @@ export const AboutPage = (): React.ReactElement => (
 					collar’ system development roles… [he has] a passion for, and talent in, evaluating and
 					providing valuable organizational systems to optimize various jobs.”
 				</p>
-				<cite className={styles.quoteCite}>— Co-Founder, RTA Outdoor Living</cite>
+				<cite className={styles.quoteCite}>Co-Founder, RTA Outdoor Living</cite>
 			</blockquote>
 		</section>
 
 		<section data-agent="maker" className={styles.section}>
 			<SectionHeader title="Off the clock" />
 			<p className={styles.prose}>
-				Away from the keyboard, Jacob builds physical things end to end — the same instinct that
+				Away from the keyboard, Jacob builds physical things end to end, the same instinct that
 				drives his robotics and manufacturing work, just pointed at whatever he wants to make next.
 			</p>
 			<div className={styles.skillsGrid}>
@@ -103,41 +103,18 @@ export const AboutPage = (): React.ReactElement => (
 			</div>
 		</section>
 
-		<section className={styles.section}>
-			<div className={styles.splitGrid}>
-				<div data-agent="research">
-					<SectionHeader title="Research" tight />
-					<p className={styles.prose}>
-						He studies how the way a machine is described and presented changes how people judge it.
-						As lead author, he investigates how anthropomorphic framing affects perceived danger,
-						transparency, and agency; as a contributor, he studies its effect on trust, designing the
-						paradigms and programming the robots.
-					</p>
-					<p className={styles.prose}>
-						He served as secretary of the human factors and ergonomics student chapter, and built the
-						digital and physical apparatus his studies ran on.
-					</p>
-					<img
-						src="images/purdue-poster.jpg"
-						alt="Jacob presenting his research poster at Purdue"
-						className={styles.posterImg}
-					/>
-				</div>
-
-				<div data-agent="education">
-					<SectionHeader title="Education & training" tight />
-					<div className={styles.eduList}>
-						{EDUCATION.map((e) => (
-							<div key={e.title}>
-								<h3 className={styles.eduTitle}>{e.title}</h3>
-								<p className={styles.eduMeta}>{e.meta}</p>
-							</div>
-						))}
+		<section data-agent="education" className={styles.section}>
+			<SectionHeader title="Education & training" />
+			<div className={styles.eduList}>
+				{EDUCATION.map((e) => (
+					<div key={e.title}>
+						<h3 className={styles.eduTitle}>{e.title}</h3>
+						<p className={styles.eduMeta}>{e.meta}</p>
 					</div>
-					<div className={styles.badge}>
-						<CredlyBadge />
-					</div>
-				</div>
+				))}
+			</div>
+			<div className={styles.badge}>
+				<CredlyBadge />
 			</div>
 		</section>
 

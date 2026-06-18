@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import type { Project } from '../data/projects.ts';
+import { AxleThumb } from './AxleThumb.tsx';
 import styles from './ProjectModal.module.css';
 
 type Props = {
@@ -25,7 +26,15 @@ export const ProjectModal = ({ project, onClose }: Props): React.ReactElement =>
 			aria-label={project.title}
 		>
 			<div className={styles.dialog} onClick={(e) => e.stopPropagation()}>
-				<div className={styles.media} style={{ backgroundImage: `url(${project.img})` }}>
+				<div
+					className={styles.media}
+					style={
+						project.live
+							? undefined
+							: { backgroundImage: `url(${project.img})`, backgroundPosition: project.imgPos }
+					}
+				>
+					{project.live && <AxleThumb />}
 					<button className={styles.close} onClick={onClose} aria-label="Close">
 						×
 					</button>

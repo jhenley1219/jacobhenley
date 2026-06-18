@@ -1,4 +1,12 @@
-export type ProjectId = 'flagship' | 'robot-arm' | 'sim' | 'autonomous' | 'noseknows' | 'blimp';
+export type ProjectId =
+	| 'flagship'
+	| 'axle'
+	| 'robot-arm'
+	| 'sim'
+	| 'autonomous'
+	| 'noseknows'
+	| 'blimp'
+	| 'purdue';
 
 export type Project = {
 	eyebrow: string;
@@ -10,7 +18,9 @@ export type Project = {
 	build: Array<string>;
 	impact: Array<string>;
 	stack: string;
+	imgPos?: string;
 	links?: Array<{ label: string; href: string }>;
+	live?: boolean;
 };
 
 export const PROJECTS: Record<ProjectId, Project> = {
@@ -21,18 +31,38 @@ export const PROJECTS: Record<ProjectId, Project> = {
 		year: '2023–Present',
 		img: 'images/kitchen-platform.jpg',
 		problem:
-			'A made-to-order product line depended on slow, manual design and quoting — and customers struggled to picture a finished build in their own space, a visualization the business paid an outside firm roughly $100k/year to produce.',
+			'A production platform a manufacturer uses to design, price, and sell custom outdoor kitchens.',
 		build: [
-			'Joined as an apprentice to a senior systems architect and grew into the platform’s primary author, now owning the full stack end to end.',
-			'Built the standout feature: designers drop a photo of a customer’s own backyard into a real-time 3D scene and place the kitchen inside it, producing a true-to-life rendering on demand.',
-			'Layered in AI image upscaling and generation for high-fidelity renders with correct shadows — without hallucinating away real kitchen detail.',
-			'Migrated the platform to Azure Static Web Apps and a SQL database, expanded every package, and built additional packages and companion apps.',
+			'In-house image pipeline that turns a design into a sales-ready rendering, from an uploaded photo or the customer’s own photos in the CRM.',
+			'3D environment objects: seating, bar stools, canvases, and full-scene staging.',
+			'Customer-facing design package: a shareable presentation with the 3D model, an itemized estimate, and a printable quote.',
+			'CRM integration that keeps design, pricing, and customer data in sync through its API.',
 		],
 		impact: [
-			'Replaced a ~$100k/year outsourced rendering service with an in-house, on-demand tool.',
-			'Became the production platform the business now designs and quotes with.',
+			'Replaced an outsourced rendering firm, saving ~$90k a year.',
+			'Used daily to design and quote every build.',
 		],
-		stack: 'TypeScript · React 19 · Three.js · Azure (SWA, Functions) · SQL · Prisma · Auth · CI/CD',
+		stack: 'TypeScript · React 19 · Three.js · Azure (SWA, Functions) · SQL · Prisma · HubSpot API · Replicate · Auth · CI/CD',
+	},
+	axle: {
+		eyebrow: 'Open source · Spatial agent workspace',
+		title: 'Axle',
+		role: 'Creator · Full-stack',
+		year: '2026',
+		img: 'images/axle.svg',
+		live: true,
+		problem:
+			'Coding agents can change real files and run real commands now. The hard part is keeping track of a few at once across a stack of look-alike terminals.',
+		build: [
+			'A self-hosted control surface for coding agents: direct and supervise them from one place instead of babysitting terminals.',
+			'Lays every project out in space, a 2D constellation or a 3D galaxy in Three.js, so you track work by where it sits, not by re-reading it.',
+			'Voice output and one-command Docker isolation, with anything destructive gated behind a tap or a spoken yes.',
+		],
+		impact: [
+			'See at a glance what every agent is doing and where it lives.',
+			'Open source and built from swappable parts, not locked to one model or voice vendor.',
+		],
+		stack: 'TypeScript · React · Node/Express · WebSocket · Three.js · MCP · Claude Code CLI · Docker',
 	},
 	'robot-arm': {
 		eyebrow: 'HRI research',
@@ -66,7 +96,7 @@ export const PROJECTS: Record<ProjectId, Project> = {
 		stack: 'Blender · 3D modeling · Animation',
 	},
 	autonomous: {
-		eyebrow: 'Built from scratch',
+		eyebrow: 'HRI · Embedded systems',
 		title: 'Autonomous robot',
 		role: 'Researcher',
 		year: '2024–2025',
@@ -74,12 +104,12 @@ export const PROJECTS: Record<ProjectId, Project> = {
 		problem:
 			'A human-robot interaction study on trust needed both a physical robot and a complete experiment harness around it.',
 		build: [
-			'Built the robot on a microcontroller board: motors, an arm, and line-following sensors driven over wireless serial.',
+			'Programmed a MegaPi microcontroller in C++ at the embedded level, driving motors, an arm, and line-following sensors over wireless serial.',
 			'Wrote the full experiment as a desktop app: consent, instructions, questionnaires, the task, and data capture.',
 			'Manipulated how the robot was described to test its effect on participants’ trust.',
 		],
 		impact: ['Powered a human-robot interaction study on trust, end to end.'],
-		stack: 'Arduino · Embedded C · Python · Sensors',
+		stack: 'C++ · MegaPi microcontroller · Embedded · Python · Sensors',
 	},
 	noseknows: {
 		eyebrow: 'HRI · Student Design Competition',
@@ -88,14 +118,14 @@ export const PROJECTS: Record<ProjectId, Project> = {
 		year: '2026',
 		img: 'images/nose-knows-1.jpg',
 		problem:
-			'Air-quality alerts are abstract — a beep or a blinking light is easy to ignore and says nothing intuitive about what is actually wrong with the air.',
+			'Air-quality alerts are abstract; a beep or a blinking light is easy to ignore and says nothing intuitive about what is actually wrong with the air.',
 		build: [
 			'Built an air-quality robot that reacts the way a person would: an expressive nose that sneezes or wrinkles when the air goes bad.',
 			'Read air quality with a BME688 gas sensor feeding a trained machine-learning classifier, running on a Raspberry Pi.',
 			'Designed and 3D-printed the noses and housing, and wired sensing, compute, and reaction together end to end (four-person HRI capstone).',
 		],
 		impact: [
-			'Presented at the HRI 2026 Student Design Competition — 21st ACM/IEEE Conference on Human-Robot Interaction, Edinburgh.',
+			'Presented at the HRI 2026 Student Design Competition, the 21st ACM/IEEE Conference on Human-Robot Interaction, Edinburgh.',
 			'Reframes machine feedback as an intuitive bodily reaction instead of an abstract alert.',
 		],
 		stack: 'Python · BME688 gas sensor · ML classifier · Raspberry Pi · 3D printing',
@@ -114,11 +144,11 @@ export const PROJECTS: Record<ProjectId, Project> = {
 		year: '2026',
 		img: 'images/blimp.jpg',
 		problem:
-			'The GMU BLIMP program — Biologically-inspired, Lighter-than-air, Instructional, Mechatronics Program — challenges teams to build a bio-inspired, lighter-than-air robot with flapping-wing propulsion, efficient and safe enough to fly around people.',
+			'The GMU BLIMP program (Biologically-inspired, Lighter-than-air, Instructional, Mechatronics Program) challenges teams to build a bio-inspired, lighter-than-air robot with flapping-wing propulsion, efficient and safe enough to fly around people.',
 		build: [
-			'Built a bio-inspired flapping-wing blimp — the team nicknamed it "Jack the Flapper" — over a nine-week mechatronics program at the GMU MIX.',
+			'Built a bio-inspired flapping-wing blimp, nicknamed "Jack the Flapper" by the team, over a nine-week mechatronics program at the GMU MIX.',
 			'Flew it from an ESP32 paired to a PS3 controller over Bluetooth, mapping a single joystick to three servos.',
-			'Designed a top-mounted stick-and-counterweight mechanism for pitch (front/back, side-to-side) plus zero-radius rotation, with custom FFF-printed parts — built as a team of three.',
+			'Designed a top-mounted stick-and-counterweight mechanism that tilts the blimp front-to-back and side-to-side and turns it in place, with custom 3D-printed parts, built as a team of three.',
 		],
 		impact: [
 			'Earned the GMU "Lighter-than-air Mechatronics Prototyping" micro-credential.',
@@ -127,21 +157,75 @@ export const PROJECTS: Record<ProjectId, Project> = {
 		stack: 'ESP32 · Bluetooth (PS3 controller) · 3× servo control · CAD · FFF 3D printing',
 		links: [{ label: 'BLIMP program', href: 'https://www.mix.gmu.edu/blimp' }],
 	},
+	purdue: {
+		eyebrow: 'Cognition research',
+		title: 'Attention & practice study',
+		role: 'First author',
+		year: '2023–2024',
+		img: 'images/purdue-poster.jpg',
+		imgPos: 'center 20%',
+		problem:
+			'Spatial attention speeds responses to cued locations, but it was unclear how that benefit changes as people practice the task.',
+		build: [
+			'First-authored a poster, “Does practicing reduce attentional benefits?”, on practice effects in spatial attention.',
+			'Ran the attention and lexical-decision tasks in Dr. Anne Sereno’s cognition lab.',
+			'Found the attentional benefit shrank with practice: the reaction-time advantage from a spatial cue diminished as participants repeated the task.',
+			'Built a Python tool to calibrate monitor refresh rate so stimulus timing stayed precise.',
+		],
+		impact: ['Presented at the Purdue Spring 2024 Undergraduate Research Conference.'],
+		stack: 'Python · Experimental design · Behavioral data analysis',
+	},
 };
 
-export type RoboticsCard = {
-	id: Extract<ProjectId, 'robot-arm' | 'sim' | 'autonomous' | 'noseknows' | 'blimp'>;
-	img: string;
+export type CardItem = {
+	id: string;
 	eyebrow: string;
 	title: string;
 	desc: string;
-	tag: string;
+	img?: string;
+	imgPos?: string;
+	tag?: string;
 	video?: string;
+	project?: ProjectId;
+	status?: string;
+	live?: boolean;
 };
 
-export const ROBOTICS_CARDS: Array<RoboticsCard> = [
+export const SHOWCASE_CARDS: Array<CardItem> = [
+	{
+		id: 'noseknows',
+		project: 'noseknows',
+		img: 'images/nose-knows-1.jpg',
+		eyebrow: 'HRI · Design competition',
+		title: 'Nose Knows',
+		desc: 'An air-quality robot that sneezes and wrinkles its nose at bad air, shown at the HRI 2026 conference in Edinburgh.',
+		tag: 'BME688 · ML · 3D print →',
+	},
+	{
+		id: 'blimp',
+		project: 'blimp',
+		img: 'images/blimp.jpg',
+		eyebrow: 'Mechatronics · GMU MIX',
+		title: 'BLIMP program',
+		desc: 'A bio-inspired flapping-wing blimp flown from a PS3 controller, built in a nine-week mechatronics program.',
+		tag: 'ESP32 · Servos →',
+		video: 'videos/blimp.mp4',
+	},
+	{
+		id: 'axle',
+		project: 'axle',
+		live: true,
+		eyebrow: 'Open source · Spatial agent workspace',
+		title: 'Axle',
+		desc: 'A self-hosted control surface for coding agents. Lays every session out in space so you can follow them all without a screen full of terminals.',
+		tag: 'Spatial UI · Voice · Open source →',
+	},
+];
+
+export const RESEARCH_CARDS: Array<CardItem> = [
 	{
 		id: 'robot-arm',
+		project: 'robot-arm',
 		img: 'images/robot-arm.jpg',
 		eyebrow: 'HRI research',
 		title: 'Research robot arm',
@@ -150,6 +234,7 @@ export const ROBOTICS_CARDS: Array<RoboticsCard> = [
 	},
 	{
 		id: 'sim',
+		project: 'sim',
 		img: 'images/robot-sim.jpg',
 		eyebrow: 'Research tooling',
 		title: 'Robotics simulation',
@@ -159,27 +244,28 @@ export const ROBOTICS_CARDS: Array<RoboticsCard> = [
 	},
 	{
 		id: 'autonomous',
+		project: 'autonomous',
 		img: 'images/autonomous-robot.jpg',
-		eyebrow: 'Built from scratch',
+		eyebrow: 'HRI · Embedded systems',
 		title: 'Autonomous robot',
-		desc: 'Built a custom robot and its full experiment harness for a human-robot interaction study on trust.',
-		tag: 'Embedded · Python →',
+		desc: 'A custom MegaPi robot programmed in C++, with the full experiment harness for an HRI study on trust.',
+		tag: 'C++ · Embedded →',
 	},
 	{
-		id: 'noseknows',
-		img: 'images/nose-knows-1.jpg',
-		eyebrow: 'HRI · Design competition',
-		title: 'Nose Knows',
-		desc: 'An air-quality robot that sneezes and wrinkles its nose at bad air — shown at the HRI 2026 conference in Edinburgh.',
-		tag: 'BME688 · ML · 3D print →',
+		id: 'purdue',
+		project: 'purdue',
+		img: 'images/purdue-poster.jpg',
+		imgPos: 'center 20%',
+		eyebrow: 'Cognition research',
+		title: 'Attention & practice study',
+		desc: 'First-authored a poster on practice effects in spatial attention, presented at Purdue’s 2024 undergraduate research conference.',
+		tag: 'Experiment · Python →',
 	},
 	{
-		id: 'blimp',
-		img: 'images/blimp.jpg',
-		eyebrow: 'Mechatronics · GMU MIX',
-		title: 'BLIMP program',
-		desc: 'A bio-inspired flapping-wing blimp flown from a PS3 controller, built in a nine-week mechatronics program.',
-		tag: 'ESP32 · Servos →',
-		video: 'videos/blimp.mp4',
+		id: 'litreview',
+		eyebrow: 'Systematic review · in progress',
+		title: 'Transparency in human-agent interaction',
+		desc: 'A systematic literature review on transparency in human-agent interaction, with the GMU human-robot interaction lab.',
+		status: 'In progress',
 	},
 ];

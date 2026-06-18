@@ -5,7 +5,7 @@ const USE_LOCAL = false;
 const LOCAL_MODEL_PATH = './models/';
 const TRANSFORMERS_URL = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1';
 const MODEL_ID = 'Xenova/all-MiniLM-L6-v2';
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 
 export type ProgressInfo = { status?: string; progress?: number; total?: number };
 export type MatchSource = 'keyword' | 'semantic';
@@ -33,29 +33,47 @@ type TransformersModule = {
 type CachedVec = { id: string; vec: Array<number> };
 type TargetVec = { id: string; vec: Float32Array };
 
-const normalizeQuery = (q: string): string =>
-	' ' + q.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ') + ' ';
+const clean = (s: string): string =>
+	s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+
+const normalizeQuery = (q: string): string => ' ' + clean(q) + ' ';
+
+// Cross-target function words that carry no routing signal. Filtered from
+// single-word scoring so a query's filler can't pull it toward whichever
+// target happens to list those words. Full-phrase matches are unaffected.
+const STOPWORDS = new Set<string>([
+	'the', 'and', 'for', 'with', 'from', 'into', 'about', 'you', 'your', 'his', 'her',
+	'they', 'them', 'their', 'that', 'this', 'these', 'those', 'there',
+	'was', 'were', 'are', 'has', 'had', 'have', 'been', 'being',
+	'any', 'all', 'some', 'more', 'most',
+]);
 
 class IntentClassifier {
 	private extractor: FeatureExtractor | null = null;
 	private targetVecs: Array<TargetVec> | null = null;
 	private loadPromise: Promise<void> | null = null;
 	ready = false;
-	failed = false;
 
 	private keywordScore(q: string, t: Target): number {
 		const query = normalizeQuery(q);
 		let score = 0;
-		const phrases = t.ex.concat([t.label.toLowerCase()]);
-		for (const phrase of phrases) {
-			const p = phrase.toLowerCase();
+		const phrases = new Set([...t.ex, t.label].map(clean));
+		const words = new Set<string>();
+		for (const p of phrases) {
 			if (query.indexOf(' ' + p + ' ') !== -1) {
-				score += 3;
+				// Reward specificity: a longer exact phrase ("soft skills") is a
+				// stronger signal than a generic single token ("skills"/"work").
+				score += 2 + p.split(' ').length;
 				continue;
 			}
 			for (const word of p.split(' ')) {
-				if (word.length > 2 && query.indexOf(' ' + word + ' ') !== -1) score += 1;
+				if (word.length > 2 && !STOPWORDS.has(word)) words.add(word);
 			}
+		}
+		// Count each distinct word once so a word repeated across a target's
+		// phrases (e.g. "work" in flagship) can't inflate the score.
+		for (const word of words) {
+			if (query.indexOf(' ' + word + ' ') !== -1) score += 1;
 		}
 		return score;
 	}
@@ -97,7 +115,6 @@ class IntentClassifier {
 			})
 			.catch((err) => {
 				console.warn('[agent] model load failed, keyword fallback:', err);
-				this.failed = true;
 			});
 		return this.loadPromise;
 	}
