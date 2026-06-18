@@ -63,6 +63,7 @@ export const PROJECTS: Record<ProjectId, Project> = {
 			'Open source and built from swappable parts, not locked to one model or voice vendor.',
 		],
 		stack: 'TypeScript · React · Node/Express · WebSocket · Three.js · MCP · Claude Code CLI · Docker',
+		links: [{ label: 'GitHub', href: 'https://github.com/jhenley1219/axel' }],
 	},
 	'robot-arm': {
 		eyebrow: 'HRI research',
@@ -110,6 +111,7 @@ export const PROJECTS: Record<ProjectId, Project> = {
 		],
 		impact: ['Powered a human-robot interaction study on trust, end to end.'],
 		stack: 'C++ · MegaPi microcontroller · Embedded · Python · Sensors',
+		links: [{ label: 'GitHub', href: 'https://github.com/jhenley1219/PaulTheRobot' }],
 	},
 	noseknows: {
 		eyebrow: 'HRI · Student Design Competition',
