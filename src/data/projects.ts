@@ -157,7 +157,10 @@ export const PROJECTS: Record<ProjectId, Project> = {
 			'Competed in the program’s judged design competition.',
 		],
 		stack: 'ESP32 · Bluetooth (PS3 controller) · 3× servo control · CAD · FFF 3D printing',
-		links: [{ label: 'BLIMP program', href: 'https://www.mix.gmu.edu/blimp' }],
+		links: [
+			{ label: 'BLIMP program', href: 'https://www.mix.gmu.edu/blimp' },
+			{ label: 'GitHub', href: 'https://github.com/jhenley1219/jack-the-flapper' },
+		],
 	},
 	purdue: {
 		eyebrow: 'Cognition research',
